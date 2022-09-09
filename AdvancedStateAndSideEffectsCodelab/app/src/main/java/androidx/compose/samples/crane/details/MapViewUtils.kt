@@ -35,7 +35,6 @@ import com.google.android.libraries.maps.MapView
 @Composable
 fun rememberMapViewWithLifecycle(): MapView {
     val context = LocalContext.current
-    // TODO Codelab: DisposableEffect step. Make MapView follow the lifecycle
     val mapView = remember {
         MapView(context).apply {
             id = R.id.map
@@ -72,6 +71,7 @@ private fun getMapLifecycleObserver(mapView: MapView): LifecycleEventObserver =
         when (event) {
             Lifecycle.Event.ON_CREATE -> mapView.onCreate(Bundle())
             Lifecycle.Event.ON_START -> mapView.onStart()
+            Lifecycle.Event.ON_RESUME -> mapView.onResume()
             Lifecycle.Event.ON_PAUSE -> mapView.onPause()
             Lifecycle.Event.ON_STOP -> mapView.onStop()
             Lifecycle.Event.ON_DESTROY -> mapView.onDestroy()
